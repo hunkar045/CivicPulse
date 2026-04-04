@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CivicPulse — Report. Track. Resolve.</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div style="display:flex;flex-direction:column;line-height:1">
+  <div class="logo">Civic<span>Pulse</span></div>
+  <div style="font-family:'Syne',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:3px;background:linear-gradient(135deg,#00e5a0,#00aaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;margin-top:1px">⚡ by TECHXCODE</div>
+</div>
+    <div class="nav-links" id="navLinks">
+      <a onclick="nav('home')">Home</a>
+      <a onclick="nav('report')">File Report</a>
+      <a onclick="nav('livemap')">Live Map</a>
+      <a onclick="nav('dashboard')">Dashboard</a>
+      <a onclick="nav('track')">Track</a>
+    </div>
+    <div class="nav-right">
+      <button class="btn-outline" id="authBtn" onclick="openAuth()">Login</button>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ AUTH MODAL ═══════════════════════ -->
+<div class="overlay" id="authOverlay">
+  <div class="modal" id="authModal">
+    <button class="modal-x" onclick="closeAuth()">✕</button>
+    <div class="modal-tabs">
+      <button class="mtab active" id="loginTab" onclick="switchAuth('login')">Login</button>
+      <button class="mtab" id="regTab" onclick="switchAuth('register')">Register</button>
+    </div>
+    <!-- LOGIN -->
+    <div id="loginForm">
+      <div class="field"><label>Email</label><input type="email" id="loginEmail" placeholder="you@email.com"/></div>
+      <div class="field"><label>Password</label><input type="password" id="loginPass" placeholder="••••••••"/></div>
+      <button class="btn-full" onclick="doLogin()">🔑 Login</button>
+      <p class="auth-switch">No account? <span onclick="switchAuth('register')">Register →</span></p>
+    </div>
+    <!-- REGISTER -->
+    <div id="registerForm" style="display:none">
+      <div class="field-row">
+        <div class="field"><label>Full Name</label><input type="text" id="regName" placeholder="Your name"/></div>
+        <div class="field"><label>Phone</label><input type="text" id="regPhone" placeholder="+91 XXXXX"/></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" id="regEmail" placeholder="you@email.com"/></div>
+      <div class="field"><label>Area / Ward</label><input type="text" id="regArea" placeholder="e.g. Dharampeth, Nagpur"/></div>
+      <div class="field"><label>Password</label><input type="password" id="regPass" placeholder="Min 6 characters"/></div>
+      <button class="btn-full" onclick="doRegister()">🚀 Create Account</button>
+      <p class="auth-switch">Have an account? <span onclick="switchAuth('login')">Login →</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="pulse-dot"></span> Live — complaints being filed right now</div>
+    <h1>Your Voice.<br/><em>Government Acts.</em></h1>
+    <p class="hero-sub">File civic complaints, track resolution in real-time, and hold your local government accountable.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="nav('report')">📣 File a Complaint</button>
+      <button class="btn-ghost" onclick="nav('track')">🔍 Track My Report</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num" data-target="12847">0</div><div class="hstat-label">Issues Filed</div></div>
+      <div class="hstat"><div class="hstat-num" data-target="8394">0</div><div class="hstat-label">Resolved</div></div>
+      <div class="hstat"><div class="hstat-num" data-target="247">0</div><div class="hstat-label">Cities Active</div></div>
+      <div class="hstat"><div class="hstat-num" data-target="41209">0</div><div class="hstat-label">Citizens</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CATEGORIES ═══════════════════════ -->
+<section id="categories" class="section">
+  <div class="container">
+    <div class="section-tag">Categories</div>
+    <h2 class="section-title">What's the issue?</h2>
+    <p class="section-sub">Select a category to auto-fill the complaint form below.</p>
+    <div class="cats-grid" id="catsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ REPORT FORM ═══════════════════════ -->
+<section id="report" class="section section-alt">
+  <div class="container">
+    <div class="section-tag">File Complaint</div>
+    <h2 class="section-title">Report an Issue</h2>
+    <p class="section-sub">All fields marked * are required. Takes under 2 minutes.</p>
+
+    <!-- Step progress -->
+    <div class="steps" id="stepsBar">
+      <div class="step done" data-n="1"><div class="sc">✓</div><div class="sl">Details</div></div>
+      <div class="step-line done"></div>
+      <div class="step active" data-n="2"><div class="sc">2</div><div class="sl">Location</div></div>
+      <div class="step-line"></div>
+      <div class="step" data-n="3"><div class="sc">3</div><div class="sl">Photos</div></div>
+      <div class="step-line"></div>
+      <div class="step" data-n="4"><div class="sc">4</div><div class="sl">Submit</div></div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-grid">
+        <!-- Row 1 -->
+        <div class="field">
+          <label>Category *</label>
+          <select id="fCat">
+            <option value="">-- Select Category --</option>
+            <option>Water Supply</option><option>Roads & Potholes</option><option>Electricity</option>
+            <option>Garbage & Sanitation</option><option>Sewage & Drainage</option><option>Street Lighting</option>
+            <option>Public Transport</option><option>Parks & Recreation</option><option>Noise Pollution</option>
+            <option>Air Pollution</option><option>Building Violations</option><option>Traffic Signal</option>
+            <option>Healthcare</option><option>Public Property Damage</option><option>Stray Animals</option>
+            <option>Trees & Greenery</option><option>Encroachment</option><option>Corruption</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Ward / Area *</label>
+          <input type="text" id="fWard" placeholder="e.g. Ward 14, Dharampeth"/>
+        </div>
+        <!-- Row 2 -->
+        <div class="field full">
+          <label>Issue Title *</label>
+          <input type="text" id="fTitle" placeholder="Brief title — e.g. No water for 3 days in our colony"/>
+        </div>
+        <!-- Row 3 -->
+        <div class="field full">
+          <label>Detailed Description *</label>
+          <textarea id="fDesc" placeholder="Describe the issue — how long, impact on residents, what has been done..."></textarea>
+        </div>
+        <!-- Priority -->
+        <div class="field full">
+          <label>Priority Level</label>
+          <div class="priority-row" id="priorityRow">
+            <button class="pri-btn active-low" onclick="setPri('low',this)">🟢 Low</button>
+            <button class="pri-btn" onclick="setPri('medium',this)">🟡 Medium</button>
+            <button class="pri-btn" onclick="setPri('high',this)">🔴 High / Emergency</button>
+          </div>
+        </div>
+        <!-- Location -->
+        <div class="field full">
+          <label>Location</label>
+          <button class="loc-btn" onclick="detectLocation()">
+            <span>📍</span><span id="locLabel">Detect My Live Location</span>
+          </button>
+          <input type="text" id="fAddress" placeholder="Or type full address / landmark" style="margin-top:.6rem"/>
+          <div class="map-preview" id="formMapWrap" style="display:none">
+            <div id="formMap"></div>
+          </div>
+        </div>
+        <!-- Photos -->
+        <div class="field full">
+          <label>Photos / Videos (optional)</label>
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="photoInput" multiple accept="image/*,video/*" onchange="previewFiles(event)"/>
+            <div class="upload-icon">📎</div>
+            <div class="upload-title">Drag & drop or click to upload</div>
+            <div class="upload-sub">JPG, PNG, MP4 — Max 10MB each, up to 5 files</div>
+            <div class="preview-row" id="previewRow"></div>
+          </div>
+        </div>
+        <!-- Anonymous -->
+        <div class="field full">
+          <label class="check-label">
+            <input type="checkbox" id="fAnon"/>
+            <span>Submit anonymously</span>
+            <small>Your name is hidden from public view. Departments can still contact you.</small>
+          </label>
+        </div>
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="submitComplaint()">
+        <span id="submitBtnText">🚀 Submit Complaint</span>
+        <div class="spinner" id="submitSpinner" style="display:none"></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LIVE MAP ═══════════════════════ -->
+<section id="livemap" class="section">
+  <div class="container">
+    <div class="section-tag">Live Tracker</div>
+    <h2 class="section-title">Complaints Map</h2>
+    <p class="section-sub">Real-time view of all civic issues. Click any pin for details.</p>
+    <div class="map-filters">
+      <button class="mf-btn active" onclick="filterMap('all',this)">All</button>
+      <button class="mf-btn" onclick="filterMap('pending',this)">Pending</button>
+      <button class="mf-btn" onclick="filterMap('in-progress',this)">In Progress</button>
+      <button class="mf-btn" onclick="filterMap('resolved',this)">Resolved</button>
+    </div>
+    <div id="liveMap"></div>
+    <div class="map-legend">
+      <div class="leg"><div class="leg-dot" style="background:#ffd166"></div>Pending</div>
+      <div class="leg"><div class="leg-dot" style="background:#0af"></div>In Progress</div>
+      <div class="leg"><div class="leg-dot" style="background:#00e5a0"></div>Resolved</div>
+      <div class="leg"><div class="leg-dot" style="background:#ff6b6b"></div>High Priority</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ DASHBOARD ═══════════════════════ -->
+<section id="dashboard" class="section section-alt">
+  <div class="container">
+    <div class="section-tag">Analytics</div>
+    <h2 class="section-title">City Dashboard</h2>
+    <p class="section-sub">Live statistics and government response performance.</p>
+
+    <div class="dash-cards" id="dashCards">
+      <div class="dcard"><div class="dnum" style="color:#ffd166" id="dTotal">—</div><div class="dlabel">Total Open</div><div class="dchange up">Live from DB</div></div>
+      <div class="dcard"><div class="dnum" style="color:#00e5a0" id="dResolved">—</div><div class="dlabel">Resolved</div><div class="dchange up">All time</div></div>
+      <div class="dcard"><div class="dnum" style="color:#0af" id="dProgress">—</div><div class="dlabel">In Progress</div><div class="dchange">Being worked on</div></div>
+      <div class="dcard"><div class="dnum" style="color:#ff6b6b" id="dHigh">—</div><div class="dlabel">High Priority</div><div class="dchange down">Needs urgent action</div></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab active" onclick="switchTab('complaints',this)">Recent Complaints</button>
+      <button class="tab" onclick="switchTab('charts',this)">Category Breakdown</button>
+      <button class="tab" onclick="switchTab('leaderboard',this)">Top Citizens</button>
+    </div>
+
+    <div id="tab-complaints" class="tab-pane active">
+      <div class="complaints-table">
+        <div class="tbl-head">
+          <span>Issue</span><span>Category</span><span>Status</span><span>Priority</span><span>Date</span>
+        </div>
+        <div id="tblBody">
+          <div class="tbl-empty">Loading complaints...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-charts" class="tab-pane">
+      <div class="dcard" style="padding:2rem">
+        <div class="chart-title">Issues by Category</div>
+        <div id="chartBars"></div>
+      </div>
+    </div>
+
+    <div id="tab-leaderboard" class="tab-pane">
+      <div class="dcard" style="padding:2rem">
+        <div class="chart-title">🏆 Most Active Citizens</div>
+        <div id="leaderboardList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TRACK ═══════════════════════ -->
+<section id="track" class="section">
+  <div class="container">
+    <div class="section-tag">Track Report</div>
+    <h2 class="section-title">Track Your Complaint</h2>
+    <p class="section-sub">Enter your unique Complaint ID to see live status and timeline.</p>
+    <div class="track-card">
+      <div class="track-row">
+        <input type="text" id="trackInput" placeholder="e.g. CP-2024-84291" style="font-family:monospace;font-size:1rem;letter-spacing:1px"/>
+        <button class="track-btn" onclick="trackComplaint()">🔍 Track</button>
+      </div>
+      <div id="trackResult" style="display:none"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <div class="footer-logo">CivicPulse</div>
+  <p>Built for citizens. Powered by transparency. <strong>Zero ads. Open source.</strong></p>
+  <div class="footer-links">
+    <span>Privacy Policy</span>·<span>Terms</span>·<span>API Docs</span>·<span>GitHub</span>
+  </div>
+  <p class="footer-copy">© 2026 CivicPulse. Making cities better, one report at a time.</p>
+  <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;align-items:center;gap:.4rem">
+    <p style="font-size:.8rem;color:#7a8099">Developed & Designed by</p>
+    <div style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#00e5a0,#00aaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px">⚡ TECHXCODE</div>
+    <p style="font-size:.75rem;color:#4a5068">Building the future, one line at a time.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ FLOATING BUTTONS ═══════════════════════ -->
+<button class="fab" id="notifFab" onclick="toggleNotif()" title="Notifications">
+  🔔<div class="fab-badge" id="fabBadge">3</div>
+</button>
+
+<!-- ═══════════════════════ SUCCESS MODAL ═══════════════════════ -->
+<div class="overlay" id="successOverlay">
+  <div class="modal success-modal">
+    <button class="modal-x" onclick="closeSuccess()">✕</button>
+    <div class="success-icon">✅</div>
+    <h3 class="modal-title">Report Submitted!</h3>
+    <p class="modal-sub">Your complaint is filed and forwarded to the concerned department. Save your ID:</p>
+    <div class="complaint-id-box" id="cIdBox">CP-2024-00000</div>
+    <button class="btn-full" onclick="copyId()">📋 Copy Complaint ID</button>
+    <button class="btn-full btn-outline-full" onclick="nav('track');closeSuccess()">🔍 Track This Complaint</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TOAST ═══════════════════════ -->
+<div class="toast" id="toast"><span id="toastIcon">✅</span><span id="toastMsg"></span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js" type="module"></script>
+</body>
+</html>
