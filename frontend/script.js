@@ -1,6 +1,6 @@
 // ══════════════════ CIVIC PULSE — script.js ══════════════════
 // Change this URL to your deployed backend URL when live!
-const API = "http://localhost:5000/api";
+const API = "https://civicpulse-4u8q.onrender.com/api";
 
 // ── STATE ──────────────────────────────────────────────────
 let token = localStorage.getItem("cp_token") || null;
