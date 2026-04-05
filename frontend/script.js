@@ -1,6 +1,6 @@
 // ══════════════════ CIVIC PULSE — script.js ══════════════════
 // Change this URL to your deployed backend URL when live!
-const API = "https://civicpulse-4u8q.onrender.com/api";
+const API = "https://civic-pulse-gilt.vercel.app/api";
 
 // ── STATE ──────────────────────────────────────────────────
 let token = localStorage.getItem("cp_token") || null;

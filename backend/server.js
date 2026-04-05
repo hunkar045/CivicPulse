@@ -8,23 +8,27 @@ dotenv.config();
 
 const app = express();
 
-// ─── MIDDLEWARE ───────────────────────────────────────────
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// ─── ROUTES ───────────────────────────────────────────────
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/complaints", require("./routes/complaintRoutes"));
 
-// ─── HEALTH CHECK ─────────────────────────────────────────
 app.get("/api/health", (req, res) => {
   res.json({ status: "CivicPulse API running ✅", time: new Date() });
 });
 
-// ─── CONNECT DB & START ───────────────────────────────────
+app.get("/", (req, res) => {
+  res.json({ message: "CivicPulse Backend Running ✅" });
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -37,3 +41,5 @@ mongoose
     console.error("❌ MongoDB connection error:", err.message);
     process.exit(1);
   });
+
+module.exports = app;
