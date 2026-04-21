@@ -23,7 +23,7 @@ h# 🏛️ CivicPulse — Report. Track. Resolve.
 
 | 🏠 Home Page | 🗺️ Live Map | 📊 Dashboard |
 |:---:|:---:|:---:|
-| ![Home](screenshots/home.png) | ![Map](screenshots/map.png) | ![Dashboard](screenshots/dashboard.png) |
+| ![Home](Screenshot_2026-04-21-16-59-53-196_com.android.chrome-edit.jpg| ![Map](screenshots/map.png) | ![Dashboard](screenshots/dashboard.png) |
 
 | 📣 File Complaint | 🔍 Track Complaint | 🔐 Login |
 |:---:|:---:|:---:|
