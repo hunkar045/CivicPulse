@@ -2,16 +2,16 @@
 
 <div align="center">
 
-![CivicPulse Banner](https://img.shields.io/badge/CivicPulse-v1.0.0-00e5a0?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wnZCbPC90ZXh0Pjwvc3ZnPg==)
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-00e5a0?style=for-the-badge)](https://musical-parfait-ee9645.netlify.app)
+[![CivicPulse](https://img.shields.io/badge/CivicPulse-v1.0.0-00e5a0?style=for-the-badge)](https://fantastic-pavlova-3e9a83.netlify.app)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Site-00e5a0?style=for-the-badge)](https://fantastic-pavlova-3e9a83.netlify.app)
 [![Backend](https://img.shields.io/badge/Backend-Vercel-000000?style=for-the-badge&logo=vercel)](https://civic-pulse-gilt.vercel.app/api/health)
 [![Database](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/atlas)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![Made by](https://img.shields.io/badge/Made%20by-TechXCode-ff6b6b?style=for-the-badge)](https://github.com/hunkar045)
 
-**A full-stack civic complaint management web app built for citizens to report, track, and resolve local government issues.**
+**A full-stack civic complaint management web app built for citizens to report, track, and resolve local government issues in real-time.**
 
-[🌐 Live Demo](https://musical-parfait-ee9645.netlify.app) • [📡 API Health](https://civic-pulse-gilt.vercel.app/api/health) • [🐛 Report Bug](https://github.com/hunkar045/CivicPulse/issues) • [💡 Request Feature](https://github.com/hunkar045/CivicPulse/issues)
+[🌐 Live Demo](https://fantastic-pavlova-3e9a83.netlify.app) &nbsp;•&nbsp; [📡 API Health](https://civic-pulse-gilt.vercel.app/api/health) &nbsp;•&nbsp; [🐛 Report Bug](https://github.com/hunkar045/CivicPulse/issues) &nbsp;•&nbsp; [💡 Request Feature](https://github.com/hunkar045/CivicPulse/issues)
 
 </div>
 
@@ -19,27 +19,54 @@
 
 ## 📸 Screenshots
 
-| Home Page | Complaints Map | Dashboard |
-|-----------|---------------|-----------|
-| ![Home](https://via.placeholder.com/300x180/0a0c10/00e5a0?text=Hero+Section) | ![Map](https://via.placeholder.com/300x180/0a0c10/00aaff?text=Live+Map) | ![Dashboard](https://via.placeholder.com/300x180/0a0c10/ffd166?text=Dashboard) |
+> 📱 **How to add screenshots:** Take screenshots of your live site → Upload to `screenshots/` folder in this repo → They will appear here automatically!
+
+| 🏠 Home Page | 🗺️ Live Map | 📊 Dashboard |
+|:---:|:---:|:---:|
+| ![Home](screenshots/home.png) | ![Map](screenshots/map.png) | ![Dashboard](screenshots/dashboard.png) |
+
+| 📣 File Complaint | 🔍 Track Complaint | 🔐 Login |
+|:---:|:---:|:---:|
+| ![File](screenshots/complaint.png) | ![Track](screenshots/track.png) | ![Login](screenshots/login.png) |
+
+### 📱 How to Upload Screenshots from Mobile:
+1. Open [fantastic-pavlova-3e9a83.netlify.app](https://fantastic-pavlova-3e9a83.netlify.app) on phone
+2. Take screenshots of each page
+3. Go to [github.com/hunkar045/CivicPulse](https://github.com/hunkar045/CivicPulse)
+4. Click **"Add file"** → **"Upload files"**
+5. Type `screenshots/home.png` as the path
+6. Upload your screenshots one by one
+7. Click **"Commit changes"** ✅
+
+---
+
+## 🌐 Live Links
+
+| Service | URL | Status |
+|---------|-----|--------|
+| 🌐 **Frontend** | https://fantastic-pavlova-3e9a83.netlify.app | ![Live](https://img.shields.io/badge/status-live-00e5a0) |
+| 📡 **Backend API** | https://civic-pulse-gilt.vercel.app | ![Live](https://img.shields.io/badge/status-live-00e5a0) |
+| ❤️ **Health Check** | https://civic-pulse-gilt.vercel.app/api/health | ![Live](https://img.shields.io/badge/status-live-00e5a0) |
+| 💾 **GitHub** | https://github.com/hunkar045/CivicPulse | - |
 
 ---
 
 ## ✨ Features
 
-- 📣 **File Complaints** — Report 19+ civic issues (Water, Roads, Electricity, Sanitation, etc.)
+- 📣 **File Complaints** — Report 19+ civic issues (Water, Roads, Electricity, Sanitation & more)
 - 📍 **Live GPS Location** — One-click location detection with interactive Leaflet map
-- 📎 **Photo/Video Upload** — Attach evidence with drag & drop (up to 5 files)
+- 📎 **Photo/Video Upload** — Attach evidence with drag & drop (up to 5 files, 10MB each)
 - 🔢 **Unique Complaint ID** — Auto-generated tracking ID (e.g. `CP-2026-84291`)
 - 🔍 **Real-time Tracking** — Live timeline showing complaint status & department updates
-- 🗺️ **Live City Map** — Real-time map showing all complaints with status-colored pins
+- 🗺️ **Live City Map** — Real-time map with status-colored complaint pins
 - 📊 **City Dashboard** — Analytics, category breakdown, response time stats
-- 🏆 **Leaderboard** — Top active citizens with points system
-- 🔐 **JWT Authentication** — Secure register/login with encrypted passwords
+- 🏆 **Leaderboard** — Top active citizens with points & rewards system
+- 🔐 **JWT Authentication** — Secure register/login with bcrypt encrypted passwords
 - 👤 **Anonymous Mode** — Option to hide identity from public view
-- ⭐ **Rate Resolution** — Citizens can rate government response quality
+- ⭐ **Rate Resolution** — Citizens can rate government response (1-5 stars)
 - 📱 **Fully Responsive** — Works on mobile, tablet, and desktop
-- ⚡ **TechXCode Branding** — Built with pride by Team TechXCode
+- 🌙 **Dark Mode UI** — Beautiful dark futuristic design
+- ⚡ **Built by TechXCode** — Nagpur's finest dev team
 
 ---
 
@@ -48,29 +75,31 @@
 ### Frontend
 | Technology | Purpose |
 |------------|---------|
-| HTML5, CSS3, JavaScript | Core frontend |
-| Vite | Build tool & dev server |
+| HTML5, CSS3, Vanilla JavaScript | Core frontend |
+| Vite v5 | Build tool & dev server |
 | Leaflet.js | Interactive maps |
 | Google Fonts (Syne + DM Sans) | Typography |
+| CartoDB Dark Tiles | Dark map theme |
 
 ### Backend
 | Technology | Purpose |
 |------------|---------|
-| Node.js | Runtime |
+| Node.js v22 | Runtime environment |
 | Express.js | Web framework |
 | MongoDB Atlas | Cloud database |
 | Mongoose | ODM for MongoDB |
-| JWT | Authentication |
-| bcryptjs | Password hashing |
+| JSON Web Token (JWT) | Authentication |
+| bcryptjs | Password hashing (12 rounds) |
 | Multer | File uploads |
 | CORS | Cross-origin requests |
 
 ### Deployment
-| Service | Purpose |
-|---------|---------|
-| Netlify | Frontend hosting (free) |
-| Vercel | Backend hosting (free, never sleeps) |
-| MongoDB Atlas | Database (free M0 tier) |
+| Service | Purpose | Cost |
+|---------|---------|------|
+| Netlify | Frontend hosting | Free forever |
+| Vercel | Backend (never sleeps) | Free forever |
+| MongoDB Atlas M0 | Cloud database | Free forever |
+| UptimeRobot | Server monitoring | Free forever |
 
 ---
 
@@ -78,60 +107,51 @@
 
 ```
 CivicPulse/
-├── backend/
-│   ├── middleware/
+├── 📁 backend/
+│   ├── 📁 middleware/
 │   │   └── authMiddleware.js     # JWT authentication guard
-│   ├── models/
-│   │   ├── Complaint.js          # Complaint schema with auto-ID
-│   │   └── User.js               # User schema with bcrypt hashing
-│   ├── routes/
+│   ├── 📁 models/
+│   │   ├── Complaint.js          # Complaint schema with auto-ID & timeline
+│   │   └── User.js               # User schema with bcrypt & points
+│   ├── 📁 routes/
 │   │   ├── authRoutes.js         # /api/auth/* endpoints
 │   │   └── complaintRoutes.js    # /api/complaints/* endpoints
-│   ├── uploads/                  # Photo/video storage
-│   ├── .env                      # Environment variables (never commit!)
+│   ├── 📁 uploads/               # Photo/video storage
+│   ├── .env                      # 🔒 Secrets (never commit this!)
 │   ├── package.json
-│   ├── vercel.json               # Vercel deployment config
+│   ├── vercel.json               # Vercel config
 │   └── server.js                 # Express entry point
 │
-├── frontend/
-│   ├── index.html                # Main HTML - full CivicPulse UI
+├── 📁 frontend/
+│   ├── index.html                # Full CivicPulse UI
 │   ├── style.css                 # Dark futuristic theme
-│   ├── script.js                 # All frontend logic & API calls
-│   ├── vite.config.js            # Vite config with API proxy
+│   ├── script.js                 # Frontend logic & API calls
+│   ├── vite.config.js            # Vite + proxy config
 │   └── package.json
 │
+├── 📁 screenshots/               # 📸 Add your screenshots here!
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Local Setup (Laptop/PC)
 
 ### Prerequisites
-- Node.js v18+
-- Git
-- MongoDB Atlas account (free)
+- [Node.js v18+](https://nodejs.org)
+- [Git](https://git-scm.com)
+- [MongoDB Atlas](https://mongodb.com/atlas) account (free)
 
-### 1. Clone the repository
+### Step 1 — Clone
 ```bash
 git clone https://github.com/hunkar045/CivicPulse.git
 cd CivicPulse
 ```
 
-### 2. Setup MongoDB Atlas
-1. Go to [mongodb.com/atlas](https://mongodb.com/atlas) → Sign up free
-2. Create a cluster (M0 free tier)
-3. Create a database user
-4. Whitelist all IPs: `0.0.0.0/0`
-5. Copy your connection string
-
-### 3. Configure Backend
-```bash
-cd backend
-```
-
-Create `.env` file:
+### Step 2 — Configure `.env`
+Create `backend/.env`:
 ```env
 PORT=5000
 MONGO_URI=mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/civicpulse?retryWrites=true&w=majority
@@ -139,100 +159,105 @@ JWT_SECRET=your_super_secret_jwt_key_here
 NODE_ENV=development
 ```
 
-### 4. Install & Run Backend
+### Step 3 — Run Backend
 ```bash
 cd backend
 npm install
 npm run dev
-```
-✅ You should see:
-```
-✅ MongoDB connected
-🚀 Server running on http://localhost:5000
+# ✅ MongoDB connected
+# 🚀 Server on http://localhost:5000
 ```
 
-### 5. Install & Run Frontend
-Open a new terminal:
+### Step 4 — Run Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
+# ✅ Open http://localhost:3000
 ```
-✅ Open `http://localhost:3000` in browser
 
 ---
 
-## 📡 API Endpoints
+## 📱 Mobile Setup (No Laptop Needed!)
 
-### Authentication
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/api/auth/register` | Register new user | No |
-| POST | `/api/auth/login` | Login user | No |
-| GET | `/api/auth/profile` | Get user profile | Yes |
-| GET | `/api/auth/leaderboard` | Top 10 citizens | No |
+### Option A — Just use the live site!
+Open on phone: **https://fantastic-pavlova-3e9a83.netlify.app** ✅
 
-### Complaints
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/api/complaints` | File a complaint | Yes |
-| GET | `/api/complaints` | Get all complaints | No |
-| GET | `/api/complaints/stats` | City statistics | No |
-| GET | `/api/complaints/map` | Map pins data | No |
-| GET | `/api/complaints/track/:id` | Track by complaint ID | No |
-| GET | `/api/complaints/mine` | My complaints | Yes |
-| POST | `/api/complaints/:id/upvote` | Upvote complaint | Yes |
-| POST | `/api/complaints/:id/rate` | Rate resolution | Yes |
-| PATCH | `/api/complaints/:id/status` | Update status | Officer/Admin |
+### Option B — Run locally on Android with Termux
 
-### Health Check
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/health` | Server health check |
+**Step 1 — Download Termux** from F-Droid:
+```
+https://f-droid.org/packages/com.termux/
+```
+
+**Step 2 — Install Node.js:**
+```bash
+pkg update && pkg upgrade -y
+pkg install nodejs git -y
+```
+
+**Step 3 — Clone & run:**
+```bash
+git clone https://github.com/hunkar045/CivicPulse.git
+cd CivicPulse/backend
+npm install
+node server.js
+```
+
+**Step 4 — New Termux session (swipe left → New Session):**
+```bash
+cd CivicPulse/frontend
+npm install
+npm run dev
+```
+
+**Step 5 — Open Chrome:** `http://localhost:3000` 🎉
 
 ---
 
-## 🌐 Deployment
+## 📡 API Reference
 
-### Deploy Frontend (Netlify)
-```bash
-cd frontend
-npm run build
-# Drag 'dist' folder to app.netlify.com/drop
-```
+### Auth Endpoints
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| `POST` | `/api/auth/register` | Register new citizen | ❌ |
+| `POST` | `/api/auth/login` | Login | ❌ |
+| `GET` | `/api/auth/profile` | My profile | ✅ JWT |
+| `GET` | `/api/auth/leaderboard` | Top 10 citizens | ❌ |
 
-### Deploy Backend (Vercel)
-```bash
-# Push to GitHub — Vercel auto-deploys on every push
-git push origin main
-```
-
-### Environment Variables on Vercel
-Add these in Vercel dashboard → Project → Settings → Environment Variables:
-```
-MONGO_URI = your_mongodb_connection_string
-JWT_SECRET = your_jwt_secret
-NODE_ENV = production
-```
+### Complaint Endpoints
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| `POST` | `/api/complaints` | File complaint | ✅ JWT |
+| `GET` | `/api/complaints` | All complaints | ❌ |
+| `GET` | `/api/complaints/stats` | City stats | ❌ |
+| `GET` | `/api/complaints/map` | Map pins | ❌ |
+| `GET` | `/api/complaints/track/:id` | Track by ID | ❌ |
+| `GET` | `/api/complaints/mine` | My complaints | ✅ JWT |
+| `POST` | `/api/complaints/:id/upvote` | Upvote | ✅ JWT |
+| `POST` | `/api/complaints/:id/rate` | Rate 1-5 ⭐ | ✅ JWT |
+| `PATCH` | `/api/complaints/:id/status` | Update status | 🔰 Officer |
+| `GET` | `/api/health` | Health check | ❌ |
 
 ---
 
 ## 🔒 Security Features
 
-- ✅ Passwords hashed with **bcrypt** (salt rounds: 12)
+- ✅ Passwords hashed with **bcrypt** (12 salt rounds)
 - ✅ **JWT tokens** with 7-day expiry
-- ✅ **CORS** configured for cross-origin requests
-- ✅ **File type validation** on uploads
-- ✅ **File size limit** (10MB per file)
+- ✅ **CORS** configured for cross-origin
+- ✅ **File type validation** (images & videos only)
+- ✅ **10MB file size limit**, max 5 files
 - ✅ **Role-based access** (citizen / officer / admin)
 - ✅ **Anonymous complaints** option
+- ✅ All secrets in **environment variables**
 
 ---
 
 ## 🗺️ Complaint Categories
 
-| Category | Category | Category |
-|----------|----------|----------|
+| | | |
+|--|--|--|
 | 💧 Water Supply | 🛣️ Roads & Potholes | ⚡ Electricity |
 | 🗑️ Garbage & Sanitation | 🚰 Sewage & Drainage | 💡 Street Lighting |
 | 🚌 Public Transport | 🌳 Parks & Recreation | 📢 Noise Pollution |
@@ -243,44 +268,47 @@ NODE_ENV = production
 
 ---
 
+## 📊 Points System
+
+| Action | Points |
+|--------|--------|
+| 📣 File a complaint | +10 pts |
+| ✅ Complaint resolved | +20 pts |
+| ⭐ Rate a resolution | +5 pts |
+| 🏆 Top 10 leaderboard | 🎖️ Badge |
+
+---
+
 ## 👥 Team TechXCode
 
 <div align="center">
 
-| Member | Role |
+| 👤 Member | 💼 Role |
 |--------|------|
-| **Hunkar Chaware** | Full Stack Developer |
-| **Team TechXCode** | Design & Development |
+| **Hunkar Chaware** | Full Stack Developer & Team Lead |
+| **Team TechXCode** | UI/UX Design & Development |
 
 ⚡ *Building the future, one line at a time.*
+
+🏫 Yeshwantrao Chavan College of Engineering, Nagpur
 
 </div>
 
 ---
 
-## 📊 Points System
-
-| Action | Points Earned |
-|--------|--------------|
-| File a complaint | +10 points |
-| Complaint resolved | +20 points |
-| Rate a resolution | +5 points |
-
----
-
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repo
+2. Create branch: `git checkout -b feature/AmazingFeature`
+3. Commit: `git commit -m 'Add AmazingFeature'`
+4. Push: `git push origin feature/AmazingFeature`
+5. Open Pull Request
 
 ---
 
 ## 📝 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
@@ -291,15 +319,19 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Netlify](https://netlify.com) — Frontend hosting
 - [Vercel](https://vercel.com) — Backend hosting
 - [CartoDB](https://carto.com) — Dark map tiles
+- [UptimeRobot](https://uptimerobot.com) — Server monitoring
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by Team TechXCode**
+**Made with ❤️ by Team TechXCode — Nagpur**
 
-⭐ Star this repo if you found it helpful!
+⭐ **Star this repo** if you found it helpful!
 
 [![GitHub stars](https://img.shields.io/github/stars/hunkar045/CivicPulse?style=social)](https://github.com/hunkar045/CivicPulse/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/hunkar045/CivicPulse?style=social)](https://github.com/hunkar045/CivicPulse/network/members)
+
+🌐 **https://fantastic-pavlova-3e9a83.netlify.app**
 
 </div>
