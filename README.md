@@ -16,30 +16,6 @@ h# 🏛️ CivicPulse — Report. Track. Resolve.
 </div>
 
 ---
-
-## 📸 Screenshots
-
-> 📱 **How to add screenshots:** Take screenshots of your live site → Upload to `screenshots/` folder in this repo → They will appear here automatically!
-
-| 🏠 Home Page | 🗺️ Live Map | 📊 Dashboard |
-|:---:|:---:|:---:|
-| ![Home](Screenshot_2026-04-21-16-59-53-196_com.android.chrome-edit.jpg| ![Map](screenshots/map.png) | ![Dashboard](screenshots/dashboard.png) |
-
-| 📣 File Complaint | 🔍 Track Complaint | 🔐 Login |
-|:---:|:---:|:---:|
-| ![File](screenshots/complaint.png) | ![Track](screenshots/track.png) | ![Login](screenshots/login.png) |
-
-### 📱 How to Upload Screenshots from Mobile:
-1. Open [fantastic-pavlova-3e9a83.netlify.app](https://fantastic-pavlova-3e9a83.netlify.app) on phone
-2. Take screenshots of each page
-3. Go to [github.com/hunkar045/CivicPulse](https://github.com/hunkar045/CivicPulse)
-4. Click **"Add file"** → **"Upload files"**
-5. Type `screenshots/home.png` as the path
-6. Upload your screenshots one by one
-7. Click **"Commit changes"** ✅
-
----
-
 ## 🌐 Live Links
 
 | Service | URL | Status |
